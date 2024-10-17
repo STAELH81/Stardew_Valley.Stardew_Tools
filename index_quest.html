@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardew Quest Manager</title>
+    <link rel="stylesheet" href="style_quest.css ">
+</head>
+<body>
+    <a href="index.html" class="home-button">Accueil</a>
+    <img src="main-logo.png" alt="Logo" class="logo">
+    
+    <div class="container">
+        <h1>Stardew Quest Manager</h1>
+
+        <div class="add-quest">
+            <h2>Ajouter une nouvelle quête</h2>
+            <input type="text" id="quest-name" placeholder="Nom de la quête">
+            <textarea id="quest-description" placeholder="Description de la quête"></textarea>
+            <input type="text" id="quest-reward" placeholder="Récompense">
+            <button id="add-quest-btn">Ajouter la quête</button>
+        </div>
+
+        <div class="quest-list">
+            <h2>Liste des Quêtes</h2>
+            <input type="text" id="search" placeholder="Rechercher une quête...">
+            <ul id="quests"></ul>
+        </div>
+    </div>
+
+    <script src="script_quest.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Harvest Planner</title>
+    <link rel="stylesheet" href="style_profit.css">
+</head>
+<body>
+    <a href="index.html" class="home-button">Accueil</a>
+    <div class="background">
+        <img src="main-logo.png" alt="Logo" class="logo">
+
+        <div class="calculator">
+            <label for="crop">Choisissez votre culture :</label>
+            <select id="crop">
+                <option value="" data-cost="0" data-price-normal="0" data-price-gold="0" data-price-iridium="0">-- Sélectionnez une culture --</option>
+                <option value="garlic" data-cost="40" data-price-normal="60" data-price-silver="75" data-price-gold="90" data-price-iridium="120">Ail</option>
+                <option value="kale" data-cost="70" data-price-normal="110" data-price-silver="137" data-price-gold="165" data-price-iridium="220">Chou Frisé</option>
+                <option value="cauliflower" data-cost="80" data-price-normal="175" data-price-silver="218" data-price-gold="262" data-price-iridium="350">Chou Fleur</option>
+                <option value="strawberry" data-cost="100" data-price-normal="120" data-price-silver="150" data-price-gold="180" data-price-iridium="240">Fraise</option>
+                <option value="coffee" data-cost="2500" data-price-normal="15" data-price-silver="18" data-price-gold="22" data-price-iridium="30">Grain De Café</option>
+                <option value="bean" data-cost="60" data-price-normal="40" data-price-silver="50" data-price-gold="60" data-price-iridium="80">Haricot Vert</option>
+                <option value="rhubarb" data-cost="100" data-price-normal="220" data-price-silver="275" data-price-gold="330" data-price-iridium="440">Rhubarbe</option>
+                <option value="parnship" data-cost="20" data-price-normal="35" data-price-silver="43" data-price-gold="52" data-price-iridium="70">Panais</option>
+                <option value="potato" data-cost="50" data-price-normal="80" data-price-silver="100" data-price-gold="120" data-price-iridium="160">Pomme De Terre</option>
+                <option value="rice" data-cost="40" data-price-normal="30" data-price-silver="37" data-price-gold="45" data-price-iridium="60">Riz 'Non Moulu'</option>
+                <option value="tulip" data-cost="20" data-price-normal="30" data-price-silver="37" data-price-gold="45" data-price-iridium="60">Tulipe</option>
+                <option value="bluezinnia" data-cost="30" data-price-normal="50" data-price-silver="62" data-price-gold="75" data-price-iridium="100">Zinnia Bleue</option>
+                <option value="wheat" data-cost="10" data-price-normal="25" data-price-silver="31" data-price-gold="37" data-price-iridium="50">Blé</option>
+                <option value="carom" data-cost="400" data-price-normal="750" data-price-silver="937" data-price-gold="1125" data-price-iridium="1500">Carambole</option>
+                <option value="redcabbage" data-cost="100" data-price-normal="260" data-price-silver="325" data-price-gold="390" data-price-iridium="520">Chou Rouge</option>
+                <option value="summertropicalflower" data-cost="50" data-price-normal="90" data-price-silver="112" data-price-gold="135" data-price-iridium="180"> Fleur tropicale d'été</option>
+                <option value="hop" data-cost="60" data-price-normal="25" data-price-silver="31" data-price-gold="37" data-price-iridium="50">Houblon</option>
+                <option value="corn" data-cost="150" data-price-normal="50" data-price-silver="62" data-price-gold="75" data-price-iridium="100">Maïs</option>
+                <option value="melon" data-cost="80" data-price-normal="250" data-price-silver="312" data-price-gold="375" data-price-iridium="500">Melon</option>
+                <option value="blueberry" data-cost="80" data-price-normal="50" data-price-silver="62" data-price-gold="75" data-price-iridium="100">Myrtille</option>
+                <option value="poppy" data-cost="100" data-price-normal="140" data-price-silver="175" data-price-gold="210" data-price-iridium="280">Pavot</option>
+                <option value="hotpepper" data-cost="40" data-price-normal="40" data-price-silver="50" data-price-gold="60" data-price-iridium="80">Piment Fort</option>
+                <option value="radish" data-cost="40" data-price-normal="90" data-price-silver="112" data-price-gold="135" data-price-iridium="180">Radis</option>
+                <option value="tomato" data-cost="50" data-price-normal="60" data-price-silver="75" data-price-gold="90" data-price-iridium="120">Tomate</option>
+                <option value="sunflower" data-cost="200" data-price-normal="80" data-price-silver="100" data-price-gold="120" data-price-iridium="160">Tournesol</option>
+                <option value="amaranth" data-cost="70" data-price-normal="150" data-price-silver="187" data-price-gold="225" data-price-iridium="300">Amarante</option>
+                <option value="artichoke" data-cost="30" data-price-normal="160" data-price-silver="200" data-price-gold="240" data-price-iridium="320">Artichaut</option>
+                <option value="eggplant" data-cost="20" data-price-normal="60" data-price-silver="75" data-price-gold="90" data-price-iridium="120">Aubergine</option>
+                <option value="beet" data-cost="20" data-price-normal="100" data-price-silver="125" data-price-gold="150" data-price-iridium="200">Betterave</option>
+                <option value="cranberries" data-cost="240" data-price-normal="75" data-price-silver="93" data-price-gold="112" data-price-iridium="150">Canneberges</option>
+                <option value="chinesecabbage" data-cost="50" data-price-normal="80" data-price-silver="100" data-price-gold="120" data-price-iridium="160">Chou Chinois</option>
+                <option value="pumpkin" data-cost="100" data-price-normal="320" data-price-silver="400" data-price-gold="480" data-price-iridium="640">Citrouille</option>
+                <option value="yam" data-cost="60" data-price-normal="160" data-price-silver="200" data-price-gold="240" data-price-iridium="320">Igname</option>
+                <option value="grapes" data-cost="60" data-price-normal="80" data-price-silver="100" data-price-gold="120" data-price-iridium="160">Raisin</option>
+                <option value="fairyrose" data-cost="200" data-price-normal="290" data-price-silver="362" data-price-gold="435" data-price-iridium="580">Rose Féerie</option>
+                <option value="sweetgemberry" data-cost="1000" data-price-normal="3000" data-price-silver="3750" data-price-gold="4500" data-price-iridium="6000">Baie Gemme Sucrée</option>
+                <option value="cactus" data-cost="150" data-price-normal="75" data-price-silver="93" data-price-gold="112" data-price-iridium="150">Fruit De Cactus</option>
+            </select>    
+
+            <label for="quality">Qualité :</label>
+            <select id="quality">
+                <option value="normal">Normale</option>
+                <option value="silver">Argent</option>
+                <option value="gold">Or</option>
+                <option value="iridium">Iridium</option>
+            </select>
+
+            <label for="plots">Nombre de cases (carrés de culture) :</label>
+            <input type="number" id="plots" value="1" min="1">
+
+            <button id="calculate">Calculer le bénéfice</button>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="script_profit.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_grid.css">
+    <title>AquaGridPlanner</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="home-button">Accueil</a>
+    </header>    
+    <img src="main-logo.png" alt="Logo de Stardew Valley" style="max-width: 100%; height: auto;">
+    <div class="content-container">
+        <h1>Aqua Grid Planner</h1>
+    
+        <div class="grid-settings">
+            <label id="label-rows" for="grid-rows">Lignes:</label>
+            <input type="number" id="grid-rows" value="10" min="1">
+            <label id="label-cols" for="grid-cols">Colonnes:</label>
+            <input type="number" id="grid-cols" value="10" min="1">
+            <button id="generate-grid-button" onclick="generateGrid()" class="generer">Générer la Grille</button>
+        </div>
+        
+        
+        <div id="grid-container"></div>
+        
+        <div class="button-container">
+            <button onclick="selectSprinkler('basic')">Arroseur Basique</button>
+            <button onclick="selectSprinkler('quality')">Arroseur de Qualité</button>
+            <button onclick="selectSprinkler('iridium')">Arroseur Iridium</button>
+        </div>
+
+        <button onclick="deleteSprinklerMode()" class="removebutton">Mode Suppression</button>
+        
+        <script src="script_grid.js"></script>
+
+        <div class="materials-cost">
+            <h3>Coût des Matériaux</h3>
+            <ul id="materials-list" class="materials-liste">
+                <li>Arroseur Basique : 0</li>
+                <li>Arroseur de Qualité : 0</li>
+                <li>Arroseur Iridium : 0</li>
+            </ul>
+        </div>
+    </div>
+    <select id="language-select" class="language-select" onchange="changeLanguage()">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+    </select>
+    <!--A FAIRE
+    <div id="themeToggleContainer" class="theme">
+        <button id="themeToggle">Changer de Thème</button>
+    </div>
+-->
+</body>
+</html>
