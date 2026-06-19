@@ -1,63 +1,135 @@
-# Stardew Tools - Outils pour Stardew Valley
+# Stardew Tools
 
-Salut ! 👋
+Fan-made companion web app for [**Stardew Valley**](https://www.stardewvalley.net/). Not affiliated with ConcernedApe or Chucklefish.
 
-Bienvenue dans **Stardew Tools**, un ensemble d'outils utiles pour les joueurs de **Stardew Valley**. Cette collection d'outils est conçue pour vous aider à optimiser vos récoltes, gérer vos quêtes et calculer vos bénéfices directement depuis votre navigateur ou via une application Windows (.exe).
-
-## Outils disponibles :
-1. **Planificateur d'Arroseurs** : Optimisez le placement de vos arroseurs pour couvrir votre terrain de manière efficace.
-2. **Gestionnaire de Quêtes** : Suivez, ajoutez, et terminez vos quêtes dans Stardew Valley.
-3. **Calculateur de Profit** : Calculez vos profits en fonction du type de culture, du nombre de parcelles et de la qualité de vos produits.
-
-## Comment l'utiliser ?
-### Version Web :
-1. Ouvrez simplement le fichier **`index.html`** dans votre navigateur préféré.
-2. Depuis la page d'accueil, vous pouvez accéder à chacun des outils via des boutons clairs et simples.
-3. Une fois dans un outil, vous pouvez retourner à l'accueil en cliquant sur le bouton "Accueil" intégré à chaque page.
-
-### Version Exécutable (Windows) :
-1. Téléchargez la version .exe depuis la section des Releases.
-2. Lancez l'application directement depuis votre ordinateur pour accéder aux outils sans avoir besoin d'une connexion internet.
-
-## Fonctionnalités :
-- **Navigation simple** : Une page d'accueil regroupe tous les outils, et chaque page dispose d'un lien pour revenir à l'accueil.
-- **Optimisation des récoltes** : Planifiez intelligemment vos arroseurs et maximisez l'efficacité de vos parcelles.
-- **Suivi des quêtes** : Gardez une trace de vos quêtes et terminez-les facilement.
-- **Calculateur de bénéfices** : Estimez vos profits en fonction de vos récoltes et de la qualité des produits.
-
-## Technologies utilisées :
-- **HTML/CSS** : Pour la structure et le style de l'application.
-- **JavaScript** : Pour l'interactivité et la gestion des données (local storage).
+Plan your farm, track quests, estimate crop profits — runs in the browser, no account, no install.
 
 ---
 
-# Stardew Tools - Tools for Stardew Valley
+## Features
 
-Hello! 👋
+### Available tools
 
-Welcome to **Stardew Tools**, a collection of useful tools for players of **Stardew Valley**. This set of tools is designed to help you optimize your crops, manage your quests, and calculate your profits directly from your browser or via a Windows (.exe) application.
+| Tool | Description |
+|------|-------------|
+| **Sprinkler planner** | Clickable grid, sprinkler range, material costs |
+| **Quest manager** | Custom quests saved in the browser (`localStorage`) |
+| **Profit calculator** | 37 crops, 4 quality tiers, agriculturist bonus (+10%) |
 
-## Available tools:
-1. **Sprinkler Planner**: Optimize your sprinkler placement to cover your field efficiently.
-2. **Quest Manager**: Track, add, and complete your quests in Stardew Valley.
-3. **Profit Calculator**: Calculate your profits based on crop type, number of plots, and product quality.
+### Coming soon
 
-## How to use it?
-### Web Version:
-1. Simply open the **`index.html`** file in your preferred browser.
-2. From the homepage, you can access each tool via clear and simple buttons.
-3. Once in a tool, you can return to the homepage by clicking on the "Home" button embedded in each page.
+- Season calendar
+- Fish guide
+- Community center bundles
+- Villager gift preferences
+- **Interactive valley map**
 
-### Executable Version (Windows):
-1. Download the .exe version from the Releases section.
-2. Run the application directly from your computer to access the tools without needing an internet connection.
+### App-wide
 
-## Features:
-- **Simple navigation**: A homepage gathers all the tools, and each page has a link to return to the homepage.
-- **Crop optimization**: Plan your sprinklers intelligently and maximize the efficiency of your plots.
-- **Quest tracking**: Keep track of your quests and complete them easily.
-- **Profit calculator**: Estimate your profits based on your crops and product quality.
+- **5 languages** — French, English, German, Spanish, Russian (top-right selector)
+- **Light / dark theme** — sun/moon toggle (top-right), dark mode uses `main-background-dark.png`
+- **Static hosting** — deploys to Netlify for free
 
-## Technologies used:
-- **HTML/CSS**: For the structure and style of the application.
-- **JavaScript**: For interactivity and managing data (local storage).
+---
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL shown (usually `http://localhost:5173`).
+
+Production build:
+
+```bash
+npm run build
+npm run preview   # optional — test the dist/ output
+```
+
+---
+
+## Deploy on Netlify
+
+1. Push this repo to GitHub
+2. [Netlify](https://app.netlify.com) → **Add new site** → **Import from Git**
+3. Done — `netlify.toml` already sets:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+
+---
+
+## Project structure
+
+```
+index.html
+netlify.toml
+public/assets/          # Sprites, backgrounds, tool icons
+src/
+  app.js                # Shell, routing, home screen
+  theme.js              # Light / dark mode
+  i18n/locales/         # fr, en, de, es, ru
+  tools/                # One module per tool + registry.js
+  data/                 # Game data (crops, etc.)
+  styles/main.css
+```
+
+### Add a new tool
+
+1. Create `src/tools/my-tool.js` exporting `renderMyTool()` → returns a DOM element
+2. Add `tools.myTool.*` keys in every `src/i18n/locales/*.json`
+3. Register in `src/tools/registry.js` with `available: true`
+
+---
+
+## Assets
+
+All static files live in `public/assets/`.
+
+| File | Purpose |
+|------|---------|
+| `main-background.png` | Light theme background |
+| `main-background-dark.png` | Dark theme background |
+| `main-logo.png` | Home screen logo |
+| `dirt.png`, `irrigated-dirt.png` | Grid tiles |
+| `*-sprinkler.png` | Sprinkler sprites on the grid |
+
+### Custom tool icons (home menu)
+
+If you want to replace the placeholder menu icons, drop PNGs in `public/assets/icons/`:
+
+| Spec | Value |
+|------|-------|
+| **Display size** | 36×36 px |
+| **Recommended source** | **64×64 px** (@2x for sharp screens) |
+| **Format** | PNG, transparent background |
+| **Style** | Pixel art, consistent palette across icons |
+
+Suggested filenames (wired up when added):
+
+```
+public/assets/icons/grid.png
+public/assets/icons/quests.png
+public/assets/icons/profit.png
+public/assets/icons/calendar.png
+public/assets/icons/fish.png
+public/assets/icons/bundles.png
+public/assets/icons/gifts.png
+public/assets/icons/map.png
+```
+
+---
+
+## Stack
+
+- [Vite](https://vitejs.dev/) — build & dev server
+- Vanilla JS — no framework, no backend
+
+---
+
+## License & disclaimer
+
+Personal / fan project. *Stardew Valley* © ConcernedApe. Do not use project assets commercially.
+
+Contributions welcome — open an issue or PR.
