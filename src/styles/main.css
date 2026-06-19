@@ -564,6 +564,7 @@ label {
 
 input[type='text'],
 input[type='number'],
+input[type='date'],
 textarea,
 select {
   width: 100%;
@@ -754,6 +755,62 @@ select:focus {
   padding: 12px 0;
 }
 
+.quest-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quest-filters input[type='text'] {
+  flex: 2 1 180px;
+  margin-bottom: 0;
+}
+
+.quest-filters select {
+  flex: 1 1 140px;
+  margin-bottom: 0;
+}
+
+.quest-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.quest-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.quest-item--completed {
+  opacity: 0.75;
+  border-left-color: var(--color-border);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type='checkbox'] {
+  width: auto;
+  margin: 0;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0 0 12px;
+}
+
 /* Profit */
 .result-box {
   margin-top: 16px;
@@ -777,6 +834,136 @@ select:focus {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--color-text-muted);
+}
+
+/* Calendar */
+.season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.season-tab {
+  flex: 1 1 100px;
+}
+
+.calendar-content {
+  margin-top: 8px;
+}
+
+.calendar-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 24px 12px;
+}
+
+.data-table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px 12px;
+  border: 2px solid var(--color-border);
+  text-align: left;
+}
+
+.data-table th {
+  background: var(--color-surface-muted);
+  font-weight: 700;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] .data-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Gifts */
+.gift-mode-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.gift-mode-tabs .btn {
+  flex: 1 1 140px;
+}
+
+.gift-result {
+  margin-top: 12px;
+}
+
+.gift-tier {
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface-muted);
+}
+
+.gift-tier h3 {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+}
+
+.gift-tier--loved { border-left: 4px solid #c44a3a; }
+.gift-tier--liked { border-left: 4px solid var(--color-primary); }
+.gift-tier--disliked { border-left: 4px solid #a08030; }
+.gift-tier--hated { border-left: 4px solid #555; }
+
+.gift-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gift-tag {
+  padding: 4px 10px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-size: 0.82rem;
+  border-radius: 2px;
+}
+
+.gift-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.gift-search-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gift-search-item {
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.gift-search-meta {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
 }
 
 @media (max-width: 600px) {

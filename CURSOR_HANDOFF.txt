@@ -43,7 +43,7 @@ WHEN YOU CHANGE THE PROJECT
   1. Bump "version" in package.json (semver: patch for fixes, minor for features)
   2. Update README.md if behaviour, assets, deploy, or roadmap changed
   3. Run: npm run build (must pass before push)
-  4. The 3G — commit & push:
+  4. The 3G — commit & push: (Only put it in the response so the user can commit himself)
        git add .
        git commit -m "Your message (see style below)"
        git push

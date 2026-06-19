@@ -1,6 +1,8 @@
 import { renderGrid } from './grid.js';
 import { renderQuests } from './quests.js';
 import { renderProfit } from './profit.js';
+import { renderCalendar } from './calendar.js';
+import { renderGifts } from './gifts.js';
 import { renderComingSoon } from './coming-soon.js';
 
 export const tools = [
@@ -25,8 +27,8 @@ export const tools = [
   {
     id: 'calendar',
     icon: 'calendar',
-    available: false,
-    render: () => renderComingSoon('calendar'),
+    available: true,
+    render: renderCalendar,
   },
   {
     id: 'fish',
@@ -43,8 +45,8 @@ export const tools = [
   {
     id: 'gifts',
     icon: 'gift',
-    available: false,
-    render: () => renderComingSoon('gifts'),
+    available: true,
+    render: renderGifts,
   },
   {
     id: 'map',

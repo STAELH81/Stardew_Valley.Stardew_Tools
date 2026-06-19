@@ -12,16 +12,16 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 
 | Tool | Description |
 |------|-------------|
-| **Sprinkler planner** | Clickable grid, sprinkler range, material costs |
-| **Quest manager** | Custom quests saved in the browser (`localStorage`) |
-| **Profit calculator** | 37 crops, 4 quality tiers, agriculturist bonus (+10%) |
+| **Sprinkler planner** | Clickable grid, sprinkler range, material costs, save/export/import layout |
+| **Quest manager** | Custom quests saved in the browser (`localStorage`), categories, deadlines, export |
+| **Profit calculator** | 37 crops, 4 quality tiers, multi-harvest, agriculturist bonus (+10%) |
+| **Season calendar** | Crops by season with grow days, regrow, and seed cost |
+| **Villager gifts** | Loved/liked/disliked/hated gifts for 20 NPCs, search by item |
 
 ### Coming soon
 
-- Season calendar
 - Fish guide
 - Community center bundles
-- Villager gift preferences
 - **Interactive valley map**
 
 ### App-wide
