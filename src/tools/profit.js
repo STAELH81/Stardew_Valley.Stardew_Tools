@@ -26,15 +26,37 @@ export function renderProfit() {
       </select>
       <label for="profit-plots">${t('profit.plots')}</label>
       <input type="number" id="profit-plots" value="1" min="1">
+      <label for="profit-harvests">${t('profit.harvests')}</label>
+      <input type="number" id="profit-harvests" value="1" min="1">
+      <label class="checkbox-label">
+        <input type="checkbox" id="profit-greenhouse">
+        ${t('profit.greenhouse')}
+      </label>
+      <p id="profit-greenhouse-hint" class="hint hidden">${t('profit.greenhouseHint')}</p>
       <button type="button" id="profit-calc" class="btn">${t('profit.calculate')}</button>
       <div id="profit-result" class="result-box"></div>
     </div>
   `;
 
+  const cropSelect = root.querySelector('#profit-crop');
+  const harvestsInput = root.querySelector('#profit-harvests');
+  const greenhouseCheck = root.querySelector('#profit-greenhouse');
+  const greenhouseHint = root.querySelector('#profit-greenhouse-hint');
+
+  cropSelect.addEventListener('change', () => {
+    const crop = crops.find(c => c.id === cropSelect.value);
+    if (crop?.harvests) harvestsInput.value = crop.harvests;
+  });
+
+  greenhouseCheck.addEventListener('change', () => {
+    greenhouseHint.classList.toggle('hidden', !greenhouseCheck.checked);
+  });
+
   root.querySelector('#profit-calc').addEventListener('click', () => {
-    const cropId = root.querySelector('#profit-crop').value;
+    const cropId = cropSelect.value;
     const quality = root.querySelector('#profit-quality').value;
     const plots = parseInt(root.querySelector('#profit-plots').value, 10) || 1;
+    const harvests = parseInt(harvestsInput.value, 10) || 1;
     const resultEl = root.querySelector('#profit-result');
 
     if (!cropId) {
@@ -45,12 +67,18 @@ export function renderProfit() {
     const crop = crops.find(c => c.id === cropId);
     const cost = crop.cost * plots;
     const price = crop.prices[quality];
-    const profit = price * plots - cost;
-    const profitTiller = Math.round(price * 1.1) * plots - cost;
+    const revenue = price * plots * harvests;
+    const profit = revenue - cost;
+    const revenueTiller = Math.round(price * 1.1) * plots * harvests;
+    const profitTiller = revenueTiller - cost;
 
     resultEl.innerHTML = `
+      <p>${t('profit.cost', { cost })}</p>
+      <p>${t('profit.revenue', { revenue })}</p>
+      <p><strong>${t('profit.netProfit', { profit: Math.round(profit) })}</strong></p>
       <p>${t('profit.result', { plots, crop: t(`crops.${cropId}`), profit: Math.round(profit) })}</p>
       <p>${t('profit.withTiller', { profit: Math.round(profitTiller) })}</p>
+      ${greenhouseCheck.checked ? `<p class="hint">${t('profit.greenhouseHint')}</p>` : ''}
     `;
   });
 
