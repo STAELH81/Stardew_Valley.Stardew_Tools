@@ -94,6 +94,14 @@ body {
   display: none;
 }
 
+.credits-version {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin: -8px 0 20px;
+}
+
 .credits-section {
   margin-bottom: 20px;
   padding-bottom: 16px;
