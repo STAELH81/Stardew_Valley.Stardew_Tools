@@ -966,6 +966,144 @@ select:focus {
   margin-top: 2px;
 }
 
+/* Fish */
+.fish-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px 12px;
+  margin-bottom: 16px;
+}
+
+.fish-filters label {
+  margin-bottom: 4px;
+}
+
+.fish-filters input,
+.fish-filters select {
+  margin-bottom: 0;
+}
+
+.fish-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.fish-count {
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* Bundles */
+.bundle-progress-bar {
+  height: 12px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+  margin: 12px 0 6px;
+  overflow: hidden;
+}
+
+.bundle-progress-bar__fill {
+  height: 100%;
+  background: var(--color-primary);
+  width: 0;
+  transition: width 0.25s ease;
+}
+
+.bundle-progress-text {
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.bundle-rooms {
+  margin-top: 20px;
+}
+
+.bundle-room {
+  margin-bottom: 28px;
+}
+
+.bundle-room__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.bundle-room__count {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.bundle-card {
+  margin-bottom: 14px;
+  padding: 14px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.bundle-card__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+
+.bundle-card__title--done {
+  color: var(--color-primary);
+}
+
+.bundle-card__count {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.bundle-card__reward {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin: 0 0 10px;
+}
+
+.bundle-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px;
+}
+
+.bundle-item__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+}
+
+.bundle-item__label input {
+  margin-top: 2px;
+  width: auto;
+}
+
+.bundle-item__text {
+  line-height: 1.35;
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 18px 14px;

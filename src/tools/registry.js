@@ -2,6 +2,8 @@ import { renderGrid } from './grid.js';
 import { renderQuests } from './quests.js';
 import { renderProfit } from './profit.js';
 import { renderCalendar } from './calendar.js';
+import { renderFish } from './fish.js';
+import { renderBundles } from './bundles.js';
 import { renderGifts } from './gifts.js';
 import { renderComingSoon } from './coming-soon.js';
 
@@ -33,14 +35,14 @@ export const tools = [
   {
     id: 'fish',
     icon: 'fish',
-    available: false,
-    render: () => renderComingSoon('fish'),
+    available: true,
+    render: renderFish,
   },
   {
     id: 'bundles',
     icon: 'bundle',
-    available: false,
-    render: () => renderComingSoon('bundles'),
+    available: true,
+    render: renderBundles,
   },
   {
     id: 'gifts',

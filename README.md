@@ -17,11 +17,11 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 | **Profit calculator** | 37 crops, 4 quality tiers, multi-harvest, agriculturist bonus (+10%) |
 | **Season calendar** | Crops by season with grow days, regrow, and seed cost |
 | **Villager gifts** | Loved/liked/disliked/hated gifts for 20 NPCs, search by item |
+| **Fish guide** | 45+ fish with season, weather, location, and time filters |
+| **Community center bundles** | Full bundle checklist with progress saved in the browser |
 
 ### Coming soon
 
-- Fish guide
-- Community center bundles
 - **Interactive valley map**
 
 ### App-wide
