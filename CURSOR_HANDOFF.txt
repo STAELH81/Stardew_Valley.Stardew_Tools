@@ -1,0 +1,65 @@
+================================================================================
+STARDEW TOOLS — Cursor handoff (read this on a new machine / new chat)
+================================================================================
+
+PROJECT
+  Fan-made web tools for Stardew Valley.
+  Repo: Stardew_Valley.Stardew_Tools (branch: source-code)
+  Deploy: Netlify (static) — netlify.toml runs "npm run build" → publish dist/
+
+STACK
+  Vite + vanilla JS (single-page app, no React)
+  Entry: index.html → src/main.js → src/app.js
+  Assets: public/assets/ (copied as-is to dist/ on build)
+
+STRUCTURE
+  src/
+    app.js              Shell, home screen, routing (#/grid, #/quests, …)
+    theme.js            Light/dark (localStorage)
+    version.js          Reads version from package.json
+    i18n/locales/       fr, en, de, es, ru (JSON)
+    tools/              One file per tool + registry.js
+    data/               crops.js, sprinkler-assets.js
+    styles/main.css
+  public/assets/
+    main-background.png / main-background-dark.png
+    main-logo.png
+    dirt.png, irrigated-dirt.png
+    icons/              Tool menu icons (128×128 source → shown 36×36)
+    sprinklers/         basic|quality|iridium-sprinkler.png (grid)
+                        *-sprinkler-nb.png (toolbar, no background)
+
+TOOLS
+  LIVE: sprinkler planner, quest manager (localStorage), profit calculator
+  SOON (placeholders): calendar, fish, bundles, gifts, interactive map
+
+UI CONVENTIONS
+  - Top bar (WTT Patch Notes style): sun/moon chip | language dropdown (FULL
+    names: Français, English, …) | version badge (vX.Y.Z from package.json)
+  - Home: Stardew wooden panel, tool list (not emoji cards)
+  - README: ALWAYS English only
+
+WHEN YOU CHANGE THE PROJECT
+  1. Bump "version" in package.json (semver: patch for fixes, minor for features)
+  2. Update README.md if behaviour, assets, deploy, or roadmap changed
+  3. Run: npm run build (must pass before push)
+  4. The 3G — commit & push:
+       git add .
+       git commit -m "Your message (see style below)"
+       git push
+
+COMMIT MESSAGE STYLE
+  Short title, then bullets if needed. Example:
+  "v2.1.x: WTT-style settings bar and sprinkler asset cleanup"
+  Recent history: full v2 rebuild replaced old HTML/CSS/JS folders.
+
+LOCAL DEV
+  npm install
+  npm run dev
+
+DO NOT
+  - Recreate old HTML/, CSS/, JS/, MEDIAS/ layout (removed in v2)
+  - Write README in French
+  - Commit node_modules/ or dist/ (.gitignore handles this)
+
+================================================================================

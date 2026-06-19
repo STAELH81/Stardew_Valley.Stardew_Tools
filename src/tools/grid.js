@@ -1,10 +1,5 @@
 import { t } from '../i18n/index.js';
-
-const SPRINKLER_ASSETS = {
-  basic: '/assets/basic-sprinkler.png',
-  quality: '/assets/quality-sprinkler.png',
-  iridium: '/assets/iridium-sprinkler.png',
-};
+import { SPRINKLER_ASSETS } from '../data/sprinkler-assets.js';
 
 const sprinklerRanges = {
   basic: [
@@ -45,15 +40,15 @@ export function renderGrid() {
       </div>
       <div class="sprinkler-toolbar">
         <button type="button" class="btn btn--sprinkler" data-sprinkler="basic">
-          <img src="${SPRINKLER_ASSETS.basic}" alt="" class="sprinkler-btn__img" width="28" height="28">
+          <img src="${SPRINKLER_ASSETS.basic.ui}" alt="" class="sprinkler-btn__img" width="32" height="32" data-fallback="${SPRINKLER_ASSETS.basic.grid}">
           <span>${t('grid.basic')}</span>
         </button>
         <button type="button" class="btn btn--sprinkler" data-sprinkler="quality">
-          <img src="${SPRINKLER_ASSETS.quality}" alt="" class="sprinkler-btn__img" width="28" height="28">
+          <img src="${SPRINKLER_ASSETS.quality.ui}" alt="" class="sprinkler-btn__img" width="32" height="32" data-fallback="${SPRINKLER_ASSETS.quality.grid}">
           <span>${t('grid.quality')}</span>
         </button>
         <button type="button" class="btn btn--sprinkler" data-sprinkler="iridium">
-          <img src="${SPRINKLER_ASSETS.iridium}" alt="" class="sprinkler-btn__img" width="28" height="28">
+          <img src="${SPRINKLER_ASSETS.iridium.ui}" alt="" class="sprinkler-btn__img" width="32" height="32" data-fallback="${SPRINKLER_ASSETS.iridium.grid}">
           <span>${t('grid.iridium')}</span>
         </button>
       </div>
@@ -197,6 +192,12 @@ function initGridLogic(root) {
 
   const onResize = () => applyCellSize();
   window.addEventListener('resize', onResize);
+
+  root.querySelectorAll('.sprinkler-btn__img').forEach(img => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallback) img.src = img.dataset.fallback;
+    }, { once: true });
+  });
 
   root.querySelector('#generate-grid').addEventListener('click', generateGrid);
 

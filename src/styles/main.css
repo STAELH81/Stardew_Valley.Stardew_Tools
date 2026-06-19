@@ -15,6 +15,8 @@
   --color-border-dark: #3c2810;
   --color-shadow: rgba(60, 40, 16, 0.35);
   --color-result: #f5e8c8;
+  --color-chip: rgba(255, 252, 245, 0.96);
+  --color-chip-text: #3a3028;
 }
 
 [data-theme='dark'] {
@@ -34,6 +36,8 @@
   --color-border-dark: #2a2038;
   --color-shadow: rgba(0, 0, 0, 0.55);
   --color-result: rgba(48, 38, 58, 0.95);
+  --color-chip: rgba(48, 40, 60, 0.92);
+  --color-chip-text: #f0e6dc;
 }
 
 * {
@@ -63,15 +67,113 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
+  padding: 12px 16px;
   gap: 12px;
 }
 
-.top-bar__actions {
+.settings-bar {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 6px;
   margin-left: auto;
+}
+
+.settings-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--color-chip);
+  color: var(--color-chip-text);
+  box-shadow: 0 1px 4px var(--color-shadow);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.settings-chip:hover {
+  filter: brightness(1.03);
+}
+
+.settings-chip:active {
+  transform: scale(0.98);
+}
+
+.settings-chip--icon {
+  width: 38px;
+  padding: 0;
+}
+
+.settings-chip--lang {
+  padding: 0 12px;
+}
+
+.settings-chip--version {
+  color: var(--color-accent);
+  cursor: default;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-chip--version:hover {
+  filter: none;
+}
+
+.icon-theme {
+  display: block;
+  color: var(--color-chip-text);
+}
+
+.lang-picker {
+  position: relative;
+}
+
+.lang-picker__chevron {
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
+.lang-picker__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--color-chip);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px var(--color-shadow);
+  z-index: 200;
+}
+
+.lang-picker__option {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--color-chip-text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lang-picker__option:hover {
+  background: var(--color-surface-muted);
+}
+
+.lang-picker__option--active {
+  color: var(--color-accent);
 }
 
 .view {
@@ -250,6 +352,22 @@ body {
   background: var(--color-surface-muted);
 }
 
+.tool-menu__icon-wrap {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-menu__icon-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
 .tool-menu__icon {
   flex-shrink: 0;
   width: 36px;
@@ -262,7 +380,7 @@ body {
 }
 
 .tool-menu__icon--sprinkler {
-  background-image: url('/assets/basic-sprinkler.png');
+  background-image: url('/assets/sprinklers/basic-sprinkler-nb.png');
 }
 
 .tool-menu__icon--crop {
@@ -418,61 +536,6 @@ body {
   font-size: 0.8rem;
 }
 
-.select {
-  padding: 8px 12px;
-  border-radius: 2px;
-  border: 3px solid var(--color-border-dark);
-  background: var(--color-surface-muted);
-  color: var(--color-text);
-  font-family: inherit;
-}
-
-/* Sun / moon theme toggle (CSS shapes, no emoji) */
-.theme-toggle {
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle__disc {
-  display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.15);
-}
-
-.theme-toggle--dark .theme-toggle__disc {
-  background: transparent;
-  box-shadow: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid var(--color-text);
-  position: relative;
-}
-
-.theme-toggle--dark .theme-toggle__disc::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--color-surface);
-}
-
-.theme-toggle:not(.theme-toggle--dark) .theme-toggle__disc {
-  box-shadow:
-    inset -2px -2px 0 rgba(0, 0, 0, 0.12),
-    0 0 0 2px var(--color-accent);
-}
-
 h1 {
   margin: 0 0 20px;
   font-size: 1.25rem;
@@ -582,6 +645,9 @@ select:focus {
 }
 
 .sprinkler-btn__img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
   image-rendering: pixelated;
   flex-shrink: 0;
 }
@@ -591,15 +657,15 @@ select:focus {
 }
 
 .grid-cell.sprinkler-basic {
-  background-image: url('/assets/basic-sprinkler.png');
+  background-image: url('/assets/sprinklers/basic-sprinkler.png');
 }
 
 .grid-cell.sprinkler-quality {
-  background-image: url('/assets/quality-sprinkler.png');
+  background-image: url('/assets/sprinklers/quality-sprinkler.png');
 }
 
 .grid-cell.sprinkler-iridium {
-  background-image: url('/assets/iridium-sprinkler.png');
+  background-image: url('/assets/sprinklers/iridium-sprinkler.png');
 }
 
 .grid-settings {

@@ -27,7 +27,9 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 ### App-wide
 
 - **5 languages** — French, English, German, Spanish, Russian (top-right selector)
-- **Light / dark theme** — sun/moon toggle (top-right), dark mode uses `main-background-dark.png`
+- **Light / dark theme** — sun/moon chip (top-right), dark mode uses `main-background-dark.png`
+- **Language picker** — full language names (Français, English, …) in the top bar
+- **Version badge** — synced from `package.json` (e.g. `v2.1.0`)
 - **Static hosting** — deploys to Netlify for free
 
 ---
@@ -93,20 +95,21 @@ All static files live in `public/assets/`.
 | `main-background-dark.png` | Dark theme background |
 | `main-logo.png` | Home screen logo |
 | `dirt.png`, `irrigated-dirt.png` | Grid tiles |
-| `*-sprinkler.png` | Sprinkler sprites on the grid |
+| `sprinklers/*-sprinkler.png` | Sprinkler sprites on the grid (with tile background) |
+| `sprinklers/*-sprinkler-nb.png` | Transparent sprites for toolbar buttons |
 
 ### Custom tool icons (home menu)
 
-If you want to replace the placeholder menu icons, drop PNGs in `public/assets/icons/`:
+Drop your PNGs in `public/assets/icons/` (displayed at **36×36 px**, scaled from your source file):
 
 | Spec | Value |
 |------|-------|
-| **Display size** | 36×36 px |
-| **Recommended source** | **64×64 px** (@2x for sharp screens) |
+| **Your source file** | **128×128 px** |
+| **On-screen size** | 36×36 px (auto-scaled) |
 | **Format** | PNG, transparent background |
-| **Style** | Pixel art, consistent palette across icons |
+| **Style** | Pixel art, consistent across icons |
 
-Suggested filenames (wired up when added):
+Filenames:
 
 ```
 public/assets/icons/grid.png
@@ -118,6 +121,21 @@ public/assets/icons/bundles.png
 public/assets/icons/gifts.png
 public/assets/icons/map.png
 ```
+
+Until icons are added, the menu falls back to placeholder sprites.
+
+### Sprinkler sprites
+
+All sprinkler images live in `public/assets/sprinklers/`:
+
+| File | Use |
+|------|-----|
+| `basic-sprinkler.png` | Grid tile (with dirt background) |
+| `quality-sprinkler.png` | Grid tile |
+| `iridium-sprinkler.png` | Grid tile |
+| `basic-sprinkler-nb.png` | Toolbar button (no background) |
+| `quality-sprinkler-nb.png` | Toolbar button |
+| `iridium-sprinkler-nb.png` | Toolbar button |
 
 ---
 
