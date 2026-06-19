@@ -3,13 +3,25 @@ import en from './locales/en.json';
 import de from './locales/de.json';
 import es from './locales/es.json';
 import ru from './locales/ru.json';
+import bundleItemsFr from './bundle-items/fr.json';
+import bundleItemsEn from './bundle-items/en.json';
+import bundleItemsDe from './bundle-items/de.json';
+import bundleItemsEs from './bundle-items/es.json';
+import bundleItemsRu from './bundle-items/ru.json';
+
+function withBundleItems(base, items) {
+  const prefixed = Object.fromEntries(
+    Object.entries(items).map(([id, label]) => [`bundles.item.${id}`, label])
+  );
+  return { ...base, ...prefixed };
+}
 
 export const LOCALES = {
-  fr: { label: 'Français', data: fr },
-  en: { label: 'English', data: en },
-  de: { label: 'Deutsch', data: de },
-  es: { label: 'Español', data: es },
-  ru: { label: 'Русский', data: ru },
+  fr: { label: 'Français', data: withBundleItems(fr, bundleItemsFr) },
+  en: { label: 'English', data: withBundleItems(en, bundleItemsEn) },
+  de: { label: 'Deutsch', data: withBundleItems(de, bundleItemsDe) },
+  es: { label: 'Español', data: withBundleItems(es, bundleItemsEs) },
+  ru: { label: 'Русский', data: withBundleItems(ru, bundleItemsRu) },
 };
 
 const STORAGE_KEY = 'stardew-tools-lang';

@@ -1,4 +1,4 @@
-import { t, getLocale } from '../i18n/index.js';
+import { t } from '../i18n/index.js';
 import { bundleRooms } from '../data/bundles.js';
 import { getBundleItemLabel } from '../data/bundle-item-labels.js';
 
@@ -17,7 +17,7 @@ function itemKey(roomId, bundleId, index) {
 }
 
 function itemLabel(id) {
-  return getBundleItemLabel(id, getLocale());
+  return getBundleItemLabel(id);
 }
 
 export function renderBundles() {

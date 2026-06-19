@@ -24,12 +24,13 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 
 - **Interactive valley map**
 
-### App-wide
+### App-widef
 
 - **5 languages** — French, English, German, Spanish, Russian (top-right selector)
 - **Light / dark theme** — sun/moon chip (top-right), dark mode uses `main-background-dark.png`
 - **Language picker** — full language names (Français, English, …) in the top bar
 - **Version badge** — synced from `package.json` (e.g. `v2.1.0`)
+- **Credits page** — link bottom-right (`#/credits`)
 - **Static hosting** — deploys to Netlify for free
 
 ---

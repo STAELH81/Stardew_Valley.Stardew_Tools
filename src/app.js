@@ -1,6 +1,7 @@
 import { t, getLocale, setLocale, LOCALES } from './i18n/index.js';
 import { getTheme, toggleTheme } from './theme.js';
 import { tools, getTool } from './tools/registry.js';
+import { renderCredits } from './tools/credits.js';
 import { APP_VERSION } from './version.js';
 
 let currentView = null;
@@ -45,6 +46,9 @@ export function initApp() {
       </div>
     </header>
     <main id="view" class="view"></main>
+    <footer class="app-footer">
+      <a href="#/credits" class="app-footer__link" id="credits-link">${t('credits.link')}</a>
+    </footer>
   `;
 
   initLangPicker();
@@ -123,12 +127,25 @@ function navigate(toolId) {
 
 function renderRoute() {
   const hash = window.location.hash.replace('#/', '') || '';
-  const tool = hash ? getTool(hash) : null;
   const view = document.getElementById('view');
   const backBtn = document.getElementById('nav-back');
+  const creditsLink = document.getElementById('credits-link');
 
   if (currentView?.cleanup) currentView.cleanup();
   view.innerHTML = '';
+
+  if (hash === 'credits') {
+    backBtn.classList.remove('hidden');
+    if (creditsLink) creditsLink.classList.add('hidden');
+    currentView = renderCredits();
+    view.appendChild(currentView);
+    document.title = `${t('credits.title')} — ${t('app.title')}`;
+    return;
+  }
+
+  if (creditsLink) creditsLink.classList.remove('hidden');
+
+  const tool = hash ? getTool(hash) : null;
 
   if (!tool) {
     backBtn.classList.add('hidden');
@@ -139,6 +156,7 @@ function renderRoute() {
 
   backBtn.classList.remove('hidden');
   const toolEl = tool.render();
+  currentView = toolEl;
   view.appendChild(toolEl);
   document.title = `${t(`tools.${tool.id}.title`)} — ${t('app.title')}`;
 }
@@ -240,5 +258,7 @@ function createToolMenuItem(tool, isAvailable) {
 function rerender() {
   updateThemeButton();
   syncLangUi();
+  const creditsLink = document.getElementById('credits-link');
+  if (creditsLink) creditsLink.textContent = t('credits.link');
   renderRoute();
 }
