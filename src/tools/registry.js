@@ -6,6 +6,7 @@ import { renderFish } from './fish.js';
 import { renderBundles } from './bundles.js';
 import { renderGifts } from './gifts.js';
 import { renderMap } from './map.js';
+import { renderDayPlanner } from './day-planner.js';
 
 export const tools = [
   {
@@ -55,6 +56,12 @@ export const tools = [
     icon: 'map',
     available: true,
     render: renderMap,
+  },
+  {
+    id: 'planner',
+    icon: 'planner',
+    available: true,
+    render: renderDayPlanner,
   },
 ];
 

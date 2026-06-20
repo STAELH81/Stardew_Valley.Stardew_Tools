@@ -1,6 +1,7 @@
 export const villagers = [
   {
     id: 'abigail',
+    birthday: { season: 'fall', day: 13 },
     loved: ['pumpkin', 'amethyst', 'banana_pudding', 'blackberry_cobbler', 'chocolate_cake', 'pufferfish', 'spicy_eel'],
     liked: ['quartz', 'coconut', 'fruit'],
     disliked: ['clay', 'vegetable'],
@@ -8,6 +9,7 @@ export const villagers = [
   },
   {
     id: 'alex',
+    birthday: { season: 'summer', day: 13 },
     loved: ['complete_breakfast', 'salmon_dinner'],
     liked: ['egg', 'cooking'],
     disliked: ['quartz', 'wild_horseradish'],
@@ -15,6 +17,7 @@ export const villagers = [
   },
   {
     id: 'elliott',
+    birthday: { season: 'fall', day: 5 },
     loved: ['crab_cakes', 'duck_feather', 'lobster', 'pomegranate', 'tom_kha_soup'],
     liked: ['squid_ink', 'octopus', 'sashimi'],
     disliked: ['daffodil', 'leek'],
@@ -22,6 +25,7 @@ export const villagers = [
   },
   {
     id: 'emily',
+    birthday: { season: 'spring', day: 27 },
     loved: ['cloth', 'emerald', 'jade', 'ruby', 'survival_burger', 'wool', 'topaz'],
     liked: ['amethyst', 'aquamarine', 'quartz', 'refined_quartz'],
     disliked: ['fish', 'salmonberry'],
@@ -29,6 +33,7 @@ export const villagers = [
   },
   {
     id: 'haley',
+    birthday: { season: 'summer', day: 14 },
     loved: ['coconut', 'fruit_salad', 'pink_cake', 'sunflower'],
     liked: ['daffodil', 'fruit'],
     disliked: ['quartz', 'vegetable', 'egg'],
@@ -36,6 +41,7 @@ export const villagers = [
   },
   {
     id: 'harvey',
+    birthday: { season: 'spring', day: 14 },
     loved: ['coffee', 'pickles', 'super_meal', 'truffle_oil', 'wine'],
     liked: ['corn', 'goat_cheese', 'herb'],
     disliked: ['salmonberry', 'spice_berry'],
@@ -43,6 +49,7 @@ export const villagers = [
   },
   {
     id: 'leah',
+    birthday: { season: 'winter', day: 23 },
     loved: ['poppyseed_muffin', 'salad', 'stir_fry', 'vegetable_medley', 'wine'],
     liked: ['egg', 'fruit', 'milk'],
     disliked: ['bread', 'pancakes'],
@@ -50,6 +57,7 @@ export const villagers = [
   },
   {
     id: 'maru',
+    birthday: { season: 'summer', day: 10 },
     loved: ['battery_pack', 'cauliflower', 'cheese_cauliflower', 'miners_treat', 'pepper_poppers', 'rhubarb_pie', 'strawberry'],
     liked: ['copper_bar', 'diamond', 'gold_bar', 'iron_bar', 'quartz', 'refined_quartz'],
     disliked: ['honey', 'salmonberry'],
@@ -57,6 +65,7 @@ export const villagers = [
   },
   {
     id: 'penny',
+    birthday: { season: 'fall', day: 2 },
     loved: ['diamond', 'emerald', 'melons', 'poppy', 'poppyseed_muffin', 'sandfish', 'tom_kha_soup'],
     liked: ['daffodil', 'leek', 'mineral'],
     disliked: ['beer', 'hops', 'malt'],
@@ -64,6 +73,7 @@ export const villagers = [
   },
   {
     id: 'sam',
+    birthday: { season: 'summer', day: 17 },
     loved: ['cactus_fruit', 'maple_bar', 'pizza', 'tigerseye'],
     liked: ['egg', 'joja_cola'],
     disliked: ['coal', 'quartz'],
@@ -71,6 +81,7 @@ export const villagers = [
   },
   {
     id: 'sebastian',
+    birthday: { season: 'winter', day: 10 },
     loved: ['frozen_tear', 'obsidian', 'pumpkin_soup', 'sashimi', 'void_egg'],
     liked: ['quartz', 'squid_ink'],
     disliked: ['clay', 'flower'],
@@ -78,6 +89,7 @@ export const villagers = [
   },
   {
     id: 'shane',
+    birthday: { season: 'spring', day: 20 },
     loved: ['beer', 'hot_pepper', 'pepper_poppers', 'pizza'],
     liked: ['egg', 'mayonnaise'],
     disliked: ['quartz', 'fruit'],
@@ -85,6 +97,7 @@ export const villagers = [
   },
   {
     id: 'caroline',
+    birthday: { season: 'winter', day: 7 },
     loved: ['fish_taco', 'green_tea', 'sunflower', 'tropical_curry'],
     liked: ['daffodil', 'tea_leaves'],
     disliked: ['quartz', 'salmonberry'],
@@ -92,6 +105,7 @@ export const villagers = [
   },
   {
     id: 'clint',
+    birthday: { season: 'winter', day: 26 },
     loved: ['amethyst', 'aquamarine', 'artichoke_dip', 'emerald', 'fiddlehead_fern', 'gold_bar', 'iridium_bar', 'jade', 'omni_geode', 'ruby', 'topaz'],
     liked: ['copper_bar', 'iron_bar', 'quartz', 'refined_quartz'],
     disliked: ['clay', 'wild_horseradish'],
@@ -99,6 +113,7 @@ export const villagers = [
   },
   {
     id: 'lewis',
+    birthday: { season: 'spring', day: 7 },
     loved: ['autumns_bounty', 'glazed_yams', 'green_tea', 'hot_pepper', 'purple_mushroom'],
     liked: ['blueberry', 'cactus_fruit', 'coconut', 'fruit'],
     disliked: ['quartz', 'salmonberry'],
@@ -106,6 +121,7 @@ export const villagers = [
   },
   {
     id: 'linus',
+    birthday: { season: 'winter', day: 3 },
     loved: ['blueberry_tart', 'cactus_fruit', 'coconut', 'dish_o_the_sea', 'yam'],
     liked: ['egg', 'fruit', 'largemouth_bass'],
     disliked: ['quartz'],
@@ -113,6 +129,7 @@ export const villagers = [
   },
   {
     id: 'marnie',
+    birthday: { season: 'fall', day: 18 },
     loved: ['diamond', 'farmer_lunch', 'pink_cake', 'pumpkin_pie'],
     liked: ['egg', 'milk', 'quartz'],
     disliked: ['coal', 'quartz'],
@@ -120,6 +137,7 @@ export const villagers = [
   },
   {
     id: 'pierre',
+    birthday: { season: 'spring', day: 26 },
     loved: ['fried_calamari'],
     liked: ['daffodil', 'egg', 'fruit', 'milk'],
     disliked: ['quartz', 'salmonberry'],
@@ -127,6 +145,7 @@ export const villagers = [
   },
   {
     id: 'robin',
+    birthday: { season: 'fall', day: 21 },
     loved: ['goat_cheese', 'peach', 'spaghetti'],
     liked: ['egg', 'fruit', 'hardwood', 'wood'],
     disliked: ['quartz', 'salmonberry'],
@@ -134,6 +153,7 @@ export const villagers = [
   },
   {
     id: 'willy',
+    birthday: { season: 'summer', day: 24 },
     loved: ['diamond', 'gold_bar', 'iridium_bar', 'mead', 'octopus', 'pumpkin', 'sea_cucumber', 'sturgeon'],
     liked: ['beer', 'fish', 'quartz', 'refined_quartz'],
     disliked: ['coal', 'trash'],

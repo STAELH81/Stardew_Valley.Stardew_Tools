@@ -16,9 +16,10 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 | **Quest manager** | Custom quests saved in the browser (`localStorage`), categories, deadlines, export |
 | **Profit calculator** | 37 crops, 4 quality tiers, multi-harvest, agriculturist bonus (+10%) |
 | **Season calendar** | Crops by season with grow days, regrow, and seed cost |
-| **Villager gifts** | Loved/liked/disliked/hated gifts for 20 NPCs, search by item |
 | **Fish guide** | 45+ fish with season, weather, location, and time filters |
-| **Community center bundles** | Full bundle checklist with progress saved in the browser |
+| **Community center bundles** | Full checklist, “still needed” view, and where-to-find hints |
+| **Villager gifts** | Gift tiers, weekly gift tracking (2/week), birthday calendar |
+| **Daily planner** | Checklist, optimized map route, tool upgrade tracker |
 | **Interactive valley map** | Pan/zoom map with POI markers, filters, and location details |
 
 ### App-wide
@@ -26,7 +27,7 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 - **5 languages** — French, English, German, Spanish, Russian (top-right selector)
 - **Light / dark theme** — sun/moon chip (top-right), dark mode uses `main-background-dark.png`
 - **Language picker** — full language names (Français, English, …) in the top bar
-- **Version badge** — synced from `package.json` (e.g. `v2.1.0`)
+- **Version badge** — synced from `package.json` (e.g. `v2.9.0`)
 - **Credits page** — link bottom-right (`#/credits`)
 - **Static hosting** — deploys to Netlify for free
 

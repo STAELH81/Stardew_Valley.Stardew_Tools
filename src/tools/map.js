@@ -24,26 +24,30 @@ const REGION_PIN_SIZES = {
   desert: { read: 28, edit: 24 },
 };
 
-const regionTabsHtml = MAP_REGION_ORDER.map((regionId) => {
-  const selected = regionId === DEFAULT_MAP_REGION ? ' btn--selected' : '';
-  return `<button type="button" class="btn map-region-tab${selected}" data-region="${regionId}" role="tab">${t(`map.region.${regionId}`)}</button>`;
-}).join('');
+function buildRegionTabsHtml() {
+  return MAP_REGION_ORDER.map((regionId) => {
+    const selected = regionId === DEFAULT_MAP_REGION ? ' btn--selected' : '';
+    return `<button type="button" class="btn map-region-tab${selected}" data-region="${regionId}" role="tab">${t(`map.region.${regionId}`)}</button>`;
+  }).join('');
+}
 
-const editToolbarHtml = MAP_POI_EDIT_ENABLED
-  ? `
-        <button type="button" id="map-edit-toggle" class="btn btn--ghost btn--small">${t('map.editMode')}</button>`
-  : '';
+function buildEditToolbarHtml() {
+  if (!MAP_POI_EDIT_ENABLED) return '';
+  return `
+        <button type="button" id="map-edit-toggle" class="btn btn--ghost btn--small">${t('map.editMode')}</button>`;
+}
 
-const editBarHtml = MAP_POI_EDIT_ENABLED
-  ? `
+function buildEditBarHtml() {
+  if (!MAP_POI_EDIT_ENABLED) return '';
+  return `
       <div id="map-edit-bar" class="map-edit-bar hidden">
         <label for="map-edit-poi">${t('map.editSelectPoi')}</label>
         <select id="map-edit-poi"></select>
         <button type="button" id="map-reset-pois" class="btn btn--ghost btn--small">${t('map.resetPois')}</button>
         <button type="button" id="map-export-pois" class="btn btn--ghost btn--small">${t('map.exportPois')}</button>
         <p id="map-edit-status" class="hint map-edit-status"></p>
-      </div>`
-  : '';
+      </div>`;
+}
 
 export function renderMap() {
   const root = document.createElement('div');
@@ -53,21 +57,23 @@ export function renderMap() {
       <h1>${t('tools.map.title')}</h1>
       <p id="map-hint" class="hint">${t(MAP_POI_EDIT_ENABLED ? 'map.hintDev' : 'map.hint')}</p>
       <div class="map-region-tabs" role="tablist">
-        ${regionTabsHtml}
+        ${buildRegionTabsHtml()}
       </div>
       <div class="map-toolbar">
         <label for="map-category">${t('map.filterCategory')}</label>
         <select id="map-category">
           ${MAP_CATEGORIES.map(cat => `<option value="${cat}">${t(`map.category.${cat}`)}</option>`).join('')}
         </select>
-        ${editToolbarHtml}
+        <label for="map-search">${t('map.search')}</label>
+        <input type="text" id="map-search" placeholder="${t('map.searchPlaceholder')}" autocomplete="off">
+        ${buildEditToolbarHtml()}
         <div class="map-zoom-controls">
           <button type="button" id="map-zoom-out" class="btn btn--ghost btn--small" aria-label="${t('map.zoomOut')}">−</button>
           <button type="button" id="map-zoom-reset" class="btn btn--ghost btn--small">${t('map.resetView')}</button>
           <button type="button" id="map-zoom-in" class="btn btn--ghost btn--small" aria-label="${t('map.zoomIn')}">+</button>
         </div>
       </div>
-      ${editBarHtml}
+      ${buildEditBarHtml()}
       <div id="map-missing" class="map-missing hidden"></div>
       <div id="map-viewport" class="map-viewport hidden">
         <div id="map-stage" class="map-stage">
@@ -102,6 +108,7 @@ function initMapLogic(root) {
   const editPoiSelect = root.querySelector('#map-edit-poi');
   const editStatus = root.querySelector('#map-edit-status');
   const editToggle = root.querySelector('#map-edit-toggle');
+  const searchInput = root.querySelector('#map-search');
 
   let regionId = DEFAULT_MAP_REGION;
   let regionPois = loadRegionPois(regionId);
@@ -254,9 +261,16 @@ function initMapLogic(root) {
 
   function renderPois() {
     const category = root.querySelector('#map-category').value;
+    const searchQuery = (searchInput?.value ?? '').trim().toLowerCase();
     const filtered = editMode
       ? regionPois
-      : regionPois.filter(poi => category === 'all' || poi.category === category);
+      : regionPois.filter((poi) => {
+        if (category !== 'all' && poi.category !== category) return false;
+        if (!searchQuery) return true;
+        const name = t(`map.poi.${poi.id}`).toLowerCase();
+        const description = t(`map.poi.${poi.id}.desc`).toLowerCase();
+        return name.includes(searchQuery) || description.includes(searchQuery);
+      });
     const w = img.naturalWidth || img.clientWidth;
     const h = img.naturalHeight || img.clientHeight;
 
@@ -300,7 +314,14 @@ function initMapLogic(root) {
     countEl.textContent = editMode
       ? t('map.editPoiCount', { count: regionPois.length })
       : t('map.poiCount', { count: filtered.length });
-    if (activePoi && !filtered.some(p => p.id === activePoi.id)) hidePoi();
+
+    if (activePoi && filtered.some(p => p.id === activePoi.id)) {
+      poiLayer.querySelectorAll('.map-poi').forEach((btn) => {
+        btn.classList.toggle('map-poi--active', btn.dataset.poi === activePoi.id);
+      });
+    } else if (activePoi && !filtered.some(p => p.id === activePoi.id)) {
+      hidePoi();
+    }
   }
 
   function setEditMode(on) {
@@ -467,6 +488,7 @@ function initMapLogic(root) {
 
   root.querySelector('#map-zoom-reset').addEventListener('click', resetView);
   root.querySelector('#map-category').addEventListener('change', renderPois);
+  searchInput.addEventListener('input', renderPois);
   root.querySelector('#map-poi-close').addEventListener('click', hidePoi);
 
   root.querySelectorAll('.map-region-tab').forEach((tab) => {

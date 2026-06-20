@@ -485,7 +485,8 @@ body {
 .tool-menu__icon--fish,
 .tool-menu__icon--bundle,
 .tool-menu__icon--gift,
-.tool-menu__icon--map {
+.tool-menu__icon--map,
+.tool-menu__icon--planner {
   background: #7a6858;
   opacity: 0.8;
 }
@@ -1181,6 +1182,330 @@ select:focus {
   line-height: 1.35;
 }
 
+.bundle-item__hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.bundle-item--done .bundle-item__hint {
+  display: none;
+}
+
+.bundle-mode-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.bundle-mode-tabs .btn {
+  flex: 1 1 140px;
+}
+
+.bundle-remaining-filters {
+  margin: 16px 0 8px;
+}
+
+.bundle-remaining-count {
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.bundle-remaining-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.bundle-remaining-item {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.bundle-remaining-item__main {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.bundle-remaining-item__meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.bundle-remaining-item__hint {
+  margin: 8px 0 0 28px;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+}
+
+.bundle-remaining-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 20px;
+}
+
+.game-date-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.game-date-row label {
+  margin-bottom: 0;
+}
+
+.game-date-row select,
+.game-date-row input[type='number'] {
+  width: auto;
+  min-width: 100px;
+  margin-bottom: 0;
+}
+
+.gift-week-info {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.gift-tracking-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gift-track-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.gift-track-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.gift-track-buttons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.gift-track-status {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  min-width: 80px;
+  text-align: right;
+}
+
+.gift-birthdays-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gift-birthday-item {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gift-birthday-item--today {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface-muted));
+}
+
+.gift-birthday-when {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.gift-birthday-loved {
+  font-size: 0.8rem;
+}
+
+.gift-birthday-banner {
+  padding: 10px;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--color-primary) 15%, var(--color-surface));
+  border: 2px solid var(--color-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
+.planner-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-border);
+}
+
+.planner-section h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.planner-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.planner-check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.planner-check-item--done {
+  opacity: 0.65;
+}
+
+.planner-check-item label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.planner-add-task {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.planner-add-task input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.planner-route-regions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.planner-route-region h3 {
+  font-size: 0.9rem;
+  margin: 0 0 8px;
+}
+
+.planner-route-stops {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planner-route-stop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.planner-route-result {
+  margin: 16px 0 8px;
+  padding-left: 24px;
+}
+
+.planner-route-result li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.planner-route-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.planner-route-start {
+  font-weight: 700;
+  list-style: none;
+  margin-left: -24px;
+  margin-bottom: 10px;
+}
+
+.planner-route-map-link {
+  margin-left: 8px;
+  font-size: 0.78rem;
+}
+
+.planner-route-note {
+  font-size: 0.78rem;
+}
+
+.planner-upgrades {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 8px;
+}
+
+.planner-upgrade-item {
+  padding: 10px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+}
+
+.planner-upgrade-item--done {
+  opacity: 0.6;
+}
+
+.planner-upgrade-item label {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.planner-upgrade-meta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.planner-date-display {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
 /* Map */
 .map-region-tabs {
   display: flex;
@@ -1209,6 +1534,12 @@ select:focus {
 .map-toolbar select {
   min-width: 160px;
   margin-bottom: 0;
+}
+
+.map-toolbar input[type='text'] {
+  min-width: 220px;
+  margin-bottom: 0;
+  flex: 1 1 220px;
 }
 
 .map-zoom-controls {
@@ -1319,7 +1650,7 @@ select:focus {
   transform: translate(-50%, -50%);
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-  transition: transform 0.1s;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
   appearance: none;
   font: inherit;
   line-height: 0;
@@ -1327,7 +1658,9 @@ select:focus {
 
 .map-poi:hover,
 .map-poi--active {
-  transform: translate(-50%, -50%) scale(1.35);
+  transform: translate(-50%, -50%) scale(1.45);
+  filter: saturate(1.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.92), 0 2px 8px rgba(0, 0, 0, 0.55);
   z-index: 2;
 }
 
