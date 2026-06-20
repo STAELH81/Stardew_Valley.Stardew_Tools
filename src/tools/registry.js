@@ -5,7 +5,7 @@ import { renderCalendar } from './calendar.js';
 import { renderFish } from './fish.js';
 import { renderBundles } from './bundles.js';
 import { renderGifts } from './gifts.js';
-import { renderComingSoon } from './coming-soon.js';
+import { renderMap } from './map.js';
 
 export const tools = [
   {
@@ -53,8 +53,8 @@ export const tools = [
   {
     id: 'map',
     icon: 'map',
-    available: false,
-    render: () => renderComingSoon('map'),
+    available: true,
+    render: renderMap,
   },
 ];
 

@@ -186,10 +186,11 @@ function renderHome() {
           <ul class="tool-menu" id="tool-menu-available"></ul>
         </div>
 
+        ${upcoming.length ? `
         <div class="home-section home-section--soon">
           <h2 class="home-section__title">${t('home.comingSoon')}</h2>
           <ul class="tool-menu" id="tool-menu-soon"></ul>
-        </div>
+        </div>` : ''}
       </div>
     </div>
   `;
@@ -198,7 +199,7 @@ function renderHome() {
   available.forEach(tool => availableMenu.appendChild(createToolMenuItem(tool, true)));
 
   const soonMenu = home.querySelector('#tool-menu-soon');
-  upcoming.forEach(tool => soonMenu.appendChild(createToolMenuItem(tool, false)));
+  if (soonMenu) upcoming.forEach(tool => soonMenu.appendChild(createToolMenuItem(tool, false)));
 
   return home;
 }
@@ -209,13 +210,21 @@ function createToolIcon(tool) {
 
   const img = document.createElement('img');
   img.className = 'tool-menu__icon-img';
-  img.src = `/assets/icons/${tool.id}.png`;
   img.alt = '';
   img.width = 36;
   img.height = 36;
-  img.addEventListener('error', () => {
+
+  function showFallback() {
     wrap.innerHTML = `<span class="tool-menu__icon tool-menu__icon--${tool.icon}" aria-hidden="true"></span>`;
-  });
+  }
+
+  function tryPng() {
+    img.addEventListener('error', showFallback, { once: true });
+    img.src = `/assets/icons/${tool.id}.png`;
+  }
+
+  img.addEventListener('error', tryPng, { once: true });
+  img.src = `/assets/icons/${tool.id}.svg`;
 
   wrap.appendChild(img);
   return wrap;

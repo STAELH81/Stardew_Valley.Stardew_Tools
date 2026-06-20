@@ -1,0 +1,110 @@
+export const MAP_CATEGORIES = ['all', 'shops', 'services', 'nature', 'dungeons', 'transport', 'villagers'];
+
+/** Tab order matches in-game geography: desert ← valley → island */
+export const MAP_REGION_ORDER = ['desert', 'valley', 'island'];
+
+export const DEFAULT_MAP_REGION = 'valley';
+
+export const MAP_REGIONS = {
+  desert: {
+    id: 'desert',
+    images: ['/assets/map/desert-map.png'],
+    pois: [
+      { id: 'skull_cavern', x: 17.1, y: 9.4, category: 'dungeons' },
+      { id: 'desert_pond_north', x: 18.9, y: 26.3, category: 'nature' },
+      { id: 'desert_pillars', x: 74.8, y: 18.3, category: 'nature' },
+      { id: 'desert_trader', x: 84.2, y: 38.4, category: 'shops' },
+      { id: 'desert_bus', x: 43.8, y: 42.6, category: 'transport' },
+      { id: 'sand_dragon', x: 14.8, y: 58.6, category: 'nature' },
+      { id: 'sandy_shop', x: 10.8, y: 83.8, category: 'shops' },
+      { id: 'desert_casino', x: 13.3, y: 80.8, category: 'services' },
+      { id: 'desert_statue', x: 71.6, y: 70.1, category: 'nature' },
+      { id: 'desert_pond_south', x: 64.5, y: 96.6, category: 'nature' },
+      { id: 'npc_sandy', x: 15.6, y: 83.6, category: 'villagers' },
+    ],
+  },
+  valley: {
+    id: 'valley',
+    images: [
+      '/assets/map/valley-map.png',
+      '/assets/map/valley-map.gif',
+      '/assets/map/valley-map.jpg',
+      '/assets/map/valley-map.webp',
+      '/assets/map/valley-map.svg',
+    ],
+    pois: [
+      { id: 'farmhouse', x: 35.7, y: 40.4, category: 'services' },
+      { id: 'farm_cave', x: 29.1, y: 35.9, category: 'dungeons' },
+      { id: 'bus_stop', x: 41.6, y: 32.7, category: 'transport' },
+      { id: 'community_center', x: 61.7, y: 34.3, category: 'services' },
+      { id: 'pierre', x: 58.9, y: 47.7, category: 'shops' },
+      { id: 'joja', x: 72.3, y: 46.1, category: 'shops' },
+      { id: 'saloon', x: 59.3, y: 52.6, category: 'shops' },
+      { id: 'blacksmith', x: 71.1, y: 57.9, category: 'shops' },
+      { id: 'museum', x: 73.5, y: 61.6, category: 'services' },
+      { id: 'library', x: 72.0, y: 53.6, category: 'services' },
+      { id: 'willy', x: 67.5, y: 85.9, category: 'shops' },
+      { id: 'robin', x: 56.9, y: 23.0, category: 'services' },
+      { id: 'marnie', x: 35.2, y: 57.9, category: 'services' },
+      { id: 'wizard', x: 18.0, y: 57.6, category: 'services' },
+      { id: 'adventurer_guild', x: 72.9, y: 17.9, category: 'services' },
+      { id: 'leah_house', x: 38.8, y: 63.5, category: 'services' },
+      { id: 'hat_mouse', x: 10.2, y: 60.1, category: 'shops' },
+      { id: 'quarry', x: 83.3, y: 22.9, category: 'nature' },
+      { id: 'mines', x: 66.1, y: 16.8, category: 'dungeons' },
+      { id: 'spa', x: 50.3, y: 13.7, category: 'services' },
+      { id: 'sewer', x: 57.4, y: 64.2, category: 'dungeons' },
+      { id: 'beach', x: 67.0, y: 79.5, category: 'nature' },
+      { id: 'elliott_house', x: 70.2, y: 77.2, category: 'services' },
+      { id: 'forest', x: 20.8, y: 69.0, category: 'nature' },
+      { id: 'secret_woods', x: 14.1, y: 59.7, category: 'nature' },
+      { id: 'npc_pierre_family', x: 59.1, y: 45.8, category: 'villagers' },
+      { id: 'npc_harvey', x: 57.3, y: 47.5, category: 'villagers' },
+      { id: 'npc_gus', x: 59.3, y: 54.2, category: 'villagers' },
+      { id: 'npc_clint', x: 71.0, y: 56.3, category: 'villagers' },
+      { id: 'npc_gunther', x: 73.5, y: 61.6, category: 'villagers' },
+      { id: 'npc_marnie_ranch', x: 35.2, y: 57.9, category: 'villagers' },
+      { id: 'npc_robin_family', x: 58.1, y: 22.0, category: 'villagers' },
+      { id: 'npc_wizard_npc', x: 18.2, y: 60.4, category: 'villagers' },
+      { id: 'npc_willy', x: 67.5, y: 85.9, category: 'villagers' },
+      { id: 'npc_elliott', x: 70.2, y: 79.8, category: 'villagers' },
+      { id: 'npc_leah', x: 38.0, y: 63.4, category: 'villagers' },
+      { id: 'npc_emily_haley', x: 51.3, y: 59.7, category: 'villagers' },
+      { id: 'npc_alex', x: 62.0, y: 61.0, category: 'villagers' },
+      { id: 'npc_sam_family', x: 63.1, y: 50.1, category: 'villagers' },
+      { id: 'npc_penny_pam', x: 66.7, y: 53.3, category: 'villagers' },
+      { id: 'npc_lewis', x: 59.4, y: 56.9, category: 'villagers' },
+      { id: 'npc_linus', x: 62.1, y: 17.6, category: 'villagers' },
+    ],
+  },
+  island: {
+    id: 'island',
+    images: [
+      '/assets/map/isle-map.png',
+      '/assets/map/ginger-island.png',
+      '/assets/map/ginger-island.gif',
+      '/assets/map/ginger-island.jpg',
+      '/assets/map/ginger-island.webp',
+    ],
+    pois: [
+      { id: 'volcano', x: 53.0, y: 27.9, category: 'dungeons' },
+      { id: 'island_farmhouse', x: 32.0, y: 67.6, category: 'services' },
+      { id: 'island_greenhouse', x: 28.0, y: 65.0, category: 'services' },
+      { id: 'island_ship_bin', x: 34.0, y: 66.0, category: 'services' },
+      { id: 'island_pier', x: 50.0, y: 75.8, category: 'transport' },
+      { id: 'island_bridge', x: 43.8, y: 44.3, category: 'transport' },
+      { id: 'island_dig_site', x: 44.0, y: 44.0, category: 'nature' },
+      { id: 'island_field_office', x: 53.0, y: 48.0, category: 'services' },
+      { id: 'island_trader', x: 58.0, y: 36.0, category: 'shops' },
+      { id: 'island_birdie', x: 17.0, y: 66.0, category: 'services' },
+      { id: 'island_qi_room', x: 68.0, y: 66.0, category: 'services' },
+      { id: 'island_resort', x: 68.0, y: 69.7, category: 'services' },
+      { id: 'island_cave', x: 38.0, y: 56.1, category: 'dungeons' },
+      { id: 'npc_leo', x: 78.0, y: 45.1, category: 'villagers' },
+    ],
+  },
+};
+
+/** @deprecated use MAP_REGIONS */
+export const MAP_IMAGE_CANDIDATES = MAP_REGIONS.valley.images;
+export const mapPois = MAP_REGIONS.valley.pois;

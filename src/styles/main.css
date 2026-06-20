@@ -1181,6 +1181,188 @@ select:focus {
   line-height: 1.35;
 }
 
+/* Map */
+.map-region-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.map-region-tab {
+  flex: 1 1 140px;
+}
+
+.map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.map-toolbar label {
+  margin-bottom: 4px;
+}
+
+.map-toolbar select {
+  min-width: 160px;
+  margin-bottom: 0;
+}
+
+.map-zoom-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.map-viewport {
+  position: relative;
+  overflow: hidden;
+  height: min(70vh, 520px);
+  border: 2px solid var(--color-border);
+  background: var(--color-surface-muted);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.map-viewport--dragging {
+  cursor: grabbing;
+}
+
+.map-edit-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: var(--color-surface-muted);
+  border: 2px dashed var(--color-primary);
+  border-radius: 4px;
+}
+
+.map-edit-bar label {
+  margin-bottom: 4px;
+}
+
+.map-edit-bar select {
+  min-width: 200px;
+  flex: 1 1 180px;
+  margin-bottom: 0;
+}
+
+.map-edit-status {
+  flex: 1 1 100%;
+  margin: 0;
+  min-height: 1.2em;
+}
+
+.map-viewport--edit {
+  cursor: crosshair;
+}
+
+.map-viewport--edit.map-viewport--dragging {
+  cursor: grabbing;
+}
+
+.map-viewport--edit .map-poi {
+  cursor: grab;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.map-poi--edit-selected {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--color-primary), 0 1px 6px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.map-poi--dragging {
+  cursor: grabbing;
+  z-index: 4;
+  opacity: 0.92;
+}
+
+.map-stage {
+  position: relative;
+  display: inline-block;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.map-image {
+  display: block;
+  max-width: none;
+  width: auto;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+}
+
+.map-poi-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.map-poi {
+  position: absolute;
+  width: var(--map-poi-size, 10px);
+  height: var(--map-poi-size, 10px);
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: var(--map-poi-border, 1px) solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  transition: transform 0.1s;
+  appearance: none;
+  font: inherit;
+  line-height: 0;
+}
+
+.map-poi:hover,
+.map-poi--active {
+  transform: translate(-50%, -50%) scale(1.35);
+  z-index: 2;
+}
+
+.map-poi--shops { background: #c9a227; }
+.map-poi--services { background: #6daf4a; }
+.map-poi--nature { background: #4a90c4; }
+.map-poi--dungeons { background: #c44a3a; }
+.map-poi--transport { background: #8b5080; }
+.map-poi--villagers { background: #b86cbf; }
+
+.map-poi-panel {
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--color-surface-muted);
+  border: 2px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+}
+
+.map-poi-panel h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.map-poi-count {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.map-missing {
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--color-surface-muted);
+  border: 2px dashed var(--color-border);
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 18px 14px;
@@ -1188,5 +1370,50 @@ select:focus {
 
   .tool-menu__desc {
     display: none;
+  }
+
+  .data-table {
+    font-size: 0.78rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 8px 6px;
+  }
+
+  .fish-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .bundle-items {
+    grid-template-columns: 1fr;
+  }
+
+  .season-tabs .btn,
+  .map-zoom-controls .btn {
+    flex: 1 1 auto;
+  }
+
+  .map-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .map-toolbar select {
+    margin-bottom: 0;
+  }
+
+  .map-viewport {
+    height: min(55vh, 420px);
+  }
+
+  .app-footer {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .app-footer__link {
+    padding: 6px 10px;
+    font-size: 0.72rem;
   }
 }

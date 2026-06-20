@@ -19,12 +19,9 @@ Plan your farm, track quests, estimate crop profits — runs in the browser, no 
 | **Villager gifts** | Loved/liked/disliked/hated gifts for 20 NPCs, search by item |
 | **Fish guide** | 45+ fish with season, weather, location, and time filters |
 | **Community center bundles** | Full bundle checklist with progress saved in the browser |
+| **Interactive valley map** | Pan/zoom map with POI markers, filters, and location details |
 
-### Coming soon
-
-- **Interactive valley map**
-
-### App-widef
+### App-wide
 
 - **5 languages** — French, English, German, Spanish, Russian (top-right selector)
 - **Light / dark theme** — sun/moon chip (top-right), dark mode uses `main-background-dark.png`
@@ -99,31 +96,32 @@ All static files live in `public/assets/`.
 | `sprinklers/*-sprinkler.png` | Sprinkler sprites on the grid (with tile background) |
 | `sprinklers/*-sprinkler-nb.png` | Transparent sprites for toolbar buttons |
 
-### Custom tool icons (home menu)
+### Tool icons (home menu)
 
-Drop your PNGs in `public/assets/icons/` (displayed at **36×36 px**, scaled from your source file):
-
-| Spec | Value |
-|------|-------|
-| **Your source file** | **128×128 px** |
-| **On-screen size** | 36×36 px (auto-scaled) |
-| **Format** | PNG, transparent background |
-| **Style** | Pixel art, consistent across icons |
-
-Filenames:
+Pixel-style SVG icons ship in `public/assets/icons/` (`.svg`, with optional `.png` override). Displayed at **36×36 px**.
 
 ```
-public/assets/icons/grid.png
-public/assets/icons/quests.png
-public/assets/icons/profit.png
-public/assets/icons/calendar.png
-public/assets/icons/fish.png
-public/assets/icons/bundles.png
-public/assets/icons/gifts.png
-public/assets/icons/map.png
+public/assets/icons/grid.svg
+public/assets/icons/quests.svg
+… (one file per tool id)
 ```
 
-Until icons are added, the menu falls back to placeholder sprites.
+If an icon file is missing, the menu falls back to placeholder sprites.
+
+### Interactive map
+
+Three tabs left to right: **Desert** | **Valley** (default) | **Ginger Island**. Map images live in `public/assets/map/`. Each region can use a different resolution — the viewer scales to fit.
+
+**Calibrating POI positions (dev only):** run `npm run dev`, open the map tool, click **Adjust pins**, place markers, copy JSON, paste into `src/data/map-pois.js`. Production builds (`npm run build`) strip the edit UI and always use baked-in coordinates.
+
+```
+public/assets/map/desert-map.png   ← Calico Desert (800×960)
+public/assets/map/valley-map.png   ← Stardew Valley overview
+public/assets/map/isle-map.png     ← Ginger Island overview
+public/assets/map/valley-map.svg   ← stylized fallback
+```
+
+POI marker positions are percentages in `src/data/map-pois.js` — tweak after adding your images. Filter by category includes **Villagers** (NPCs sharing a building use the same pin until you split them in dev mode).
 
 ### Sprinkler sprites
 
