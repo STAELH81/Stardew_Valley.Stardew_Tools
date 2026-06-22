@@ -457,7 +457,7 @@ body {
 }
 
 .tool-menu__icon--sprinkler {
-  background-image: url('/assets/sprinklers/basic-sprinkler-nb.png');
+  background-image: url('/assets/icons/SprinlerIcon.png');
 }
 
 .tool-menu__icon--crop {
@@ -733,6 +733,14 @@ select:focus {
 
 .grid-cell.irrigated {
   background-image: url('/assets/irrigated-dirt.png');
+}
+
+.grid-cell.sprinkler-basic,
+.grid-cell.sprinkler-quality,
+.grid-cell.sprinkler-iridium {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .grid-cell.sprinkler-basic {

@@ -3,6 +3,7 @@ import { getTheme, toggleTheme } from './theme.js';
 import { tools, getTool } from './tools/registry.js';
 import { renderCredits } from './tools/credits.js';
 import { APP_VERSION } from './version.js';
+import { getToolIconSrc } from './config/tool-icons.js';
 
 let currentView = null;
 
@@ -208,25 +209,25 @@ function createToolIcon(tool) {
   const wrap = document.createElement('span');
   wrap.className = 'tool-menu__icon-wrap';
 
-  const img = document.createElement('img');
-  img.className = 'tool-menu__icon-img';
-  img.alt = '';
-  img.width = 36;
-  img.height = 36;
+  const iconSrc = getToolIconSrc(tool.id);
 
   function showFallback() {
     wrap.innerHTML = `<span class="tool-menu__icon tool-menu__icon--${tool.icon}" aria-hidden="true"></span>`;
   }
 
-  function tryPng() {
+  if (iconSrc) {
+    const img = document.createElement('img');
+    img.className = 'tool-menu__icon-img';
+    img.alt = '';
+    img.width = 36;
+    img.height = 36;
     img.addEventListener('error', showFallback, { once: true });
-    img.src = `/assets/icons/${tool.id}.png`;
+    img.src = iconSrc;
+    wrap.appendChild(img);
+    return wrap;
   }
 
-  img.addEventListener('error', tryPng, { once: true });
-  img.src = `/assets/icons/${tool.id}.svg`;
-
-  wrap.appendChild(img);
+  showFallback();
   return wrap;
 }
 
